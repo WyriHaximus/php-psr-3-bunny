@@ -23,9 +23,9 @@ final class BunnyLoggerTest extends LoggerInterfaceTest
             $this->logs[] = $message['level'] . ' ' . $message['message'];
 
             return true;
-        }))->shouldBeCalled();
+        }), [], 'exchange', 'queue')->shouldBeCalled();
 
-        return new BunnyLogger($channel->reveal(), []);
+        return new BunnyLogger($channel->reveal(), [], 'exchange', 'queue');
     }
 
     public function getLogs()

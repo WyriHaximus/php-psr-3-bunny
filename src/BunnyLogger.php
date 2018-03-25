@@ -18,13 +18,13 @@ final class BunnyLogger extends AbstractLogger
     /**
      * @var array
      */
-    private $publishArguments = [];
+    private $publishArguments;
 
     /**
      * @param Channel $channel
      * @param array   $publishArguments
      */
-    public function __construct(Channel $channel, array $publishArguments)
+    public function __construct(Channel $channel, ...$publishArguments)
     {
         $this->channel = $channel;
         $this->publishArguments = $publishArguments;
