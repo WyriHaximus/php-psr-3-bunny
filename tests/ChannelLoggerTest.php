@@ -6,9 +6,9 @@ use Bunny\Channel;
 use Prophecy\Argument;
 use Psr\Log\LoggerInterface;
 use Psr\Log\Test\LoggerInterfaceTest;
-use WyriHaximus\React\PSR3\Bunny\BunnyLogger;
+use WyriHaximus\React\PSR3\Bunny\ChannelLogger;
 
-final class BunnyLoggerTest extends LoggerInterfaceTest
+final class ChannelLoggerTest extends LoggerInterfaceTest
 {
     /**
      * @var array
@@ -25,7 +25,7 @@ final class BunnyLoggerTest extends LoggerInterfaceTest
             return true;
         }), [], 'exchange', 'queue')->shouldBeCalled();
 
-        return new BunnyLogger($channel->reveal(), [], 'exchange', 'queue');
+        return new ChannelLogger($channel->reveal(), [], 'exchange', 'queue');
     }
 
     public function getLogs()
@@ -35,7 +35,7 @@ final class BunnyLoggerTest extends LoggerInterfaceTest
 
     public function testImplements()
     {
-        self::assertInstanceOf(LoggerInterface::class, new BunnyLogger($this->prophesize(Channel::class)->reveal(), []));
+        self::assertInstanceOf(LoggerInterface::class, new ChannelLogger($this->prophesize(Channel::class)->reveal(), []));
     }
 
     /**
@@ -43,6 +43,6 @@ final class BunnyLoggerTest extends LoggerInterfaceTest
      */
     public function testThrowsOnInvalidLevel()
     {
-        (new BunnyLogger($this->prophesize(Channel::class)->reveal(), []))->log('invalid level', 'Foo');
+        (new ChannelLogger($this->prophesize(Channel::class)->reveal(), []))->log('invalid level', 'Foo');
     }
 }

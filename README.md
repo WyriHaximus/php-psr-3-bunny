@@ -21,7 +21,7 @@ composer require wyrihaximus/psr-3-bunny
 $bunny = new Client([/** configuration */]);
 $bunny->connect();
 $channel = $bunny->channel();
-$logger = new BunnyLogger(
+$logger = new ChannelLogger(
     $channel, // Channel to communicate over
     [], // Headers
     'exchange', // Exchange

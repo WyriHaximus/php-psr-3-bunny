@@ -8,7 +8,7 @@ use function WyriHaximus\PSR3\checkCorrectLogLevel;
 use function WyriHaximus\PSR3\normalizeContext;
 use function WyriHaximus\PSR3\processPlaceHolders;
 
-final class BunnyLogger extends AbstractLogger
+final class ChannelLogger extends AbstractLogger
 {
     /**
      * @var Channel
